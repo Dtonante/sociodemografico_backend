@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import db from "../database/db.js";
-import ProfesionalModel from "./profesionalModel";
-import FactoresDeRiesgoModel from "./factoresDeRiesgoModel";
+import ProfesionalModel from "./profesionalModel.js";
+import FactoresDeRiesgoModel from "./factoresDeRiesgoModel.js";
 
 const ProfesionalFactoresRiesgo = db.define('tbl_profesional_factores_riesgo', {
     id_profesionalFK: { type: DataTypes.INTEGER, primaryKey: true, references: { model: 'tbl_profesional', key: 'id_profesionalPK' }, onDelete: 'CASCADE', onUpdate: 'CASCADE' },
@@ -11,8 +11,10 @@ const ProfesionalFactoresRiesgo = db.define('tbl_profesional_factores_riesgo', {
     timestamps: true
 });
 
-// Establecer asociaciones
-ProfesionalModel.belongsToMany(FactoresDeRiesgoModel, { through: ProfesionalFactoresRiesgo, foreignKey: 'id_profesionalFK' });
-FactoresDeRiesgoModel.belongsToMany(ProfesionalModel, { through: ProfesionalFactoresRiesgo, foreignKey: 'id_factoresRiesgoFK' });
+// Importar modelos relacionados
+ProfesionalFactoresRiesgo.belongsTo(ProfesionalModel, { foreignKey: 'id_profesionalFK' });
+ProfesionalFactoresRiesgo.belongsTo(FactoresDeRiesgoModel, { foreignKey: 'id_factoresRiesgoFK' });
+
+
 
 export default ProfesionalFactoresRiesgo;

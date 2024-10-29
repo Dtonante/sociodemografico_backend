@@ -1,5 +1,7 @@
 import { DataTypes } from "sequelize";
 import db from "../database/db.js";
+import TipoDocumentoModel from "./tipoDocumentoModel.js";
+
 
 const UsuarioModel = db.define('tbl_usuarios', {
     id_usuarioPK: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -13,5 +15,9 @@ const UsuarioModel = db.define('tbl_usuarios', {
     tableName: 'tbl_usuarios',
     timestamps: true
 });
+
+// Importar modelos relacionados
+UsuarioModel.belongsTo(TipoDocumentoModel, { foreignKey: 'int_tipoDocumentoFK' });
+
 
 export default UsuarioModel;

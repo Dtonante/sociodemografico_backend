@@ -1,4 +1,4 @@
-import { BOOLEAN, DataTypes, STRING } from "sequelize";
+import { DataTypes } from "sequelize";
 import db from "../database/db.js";
 import UsuarioModel from "./usuarioModel.js";
 import EpsModel from "./epsModel.js";
@@ -8,7 +8,7 @@ import EstructuraOrgranizacionalModel from "./estructuraOrganizacionalModel.js";
 
 const ProfesionalModel = db.define('tbl_profesional', {
     id_profesionalPK: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-    id_usuarioFK: { type: DataTypes.INTEGER, allowNull: false, references: { model: 'tbl_usuario', key: 'id_usuarioPK' }, onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    id_usuarioFK: { type: DataTypes.INTEGER, allowNull: false, references: { model: 'tbl_usuarios', key: 'id_usuarioPK' }, onDelete: 'CASCADE', onUpdate: 'CASCADE' },
     boolean_aceptaTratamientoDatos: { type: DataTypes.BOOLEAN, allowNull: false },
     date_fechaNacimiento: { type: DataTypes.DATE, allowNull: false },
     var_departamentoResidencia: { type: DataTypes.STRING(100), allowNull: false },
@@ -36,7 +36,7 @@ const ProfesionalModel = db.define('tbl_profesional', {
     var_salario: { type: DataTypes.STRING(100), allowNull: false },
     date_fechaIngresoInstitucion: { type: DataTypes.DATE, allowNull: false },
     var_antiguedadInstitucion: { type: DataTypes.STRING(100), allowNull: false },
-    id_areaFK: { type: DataTypes.INTEGER, allowNull: false, references: { model: 'tbl_estructura_organizacion', key: 'id_areaPK' }, onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    id_areaFK: { type: DataTypes.INTEGER, allowNull: false, references: { model: 'tbl_estructura_organizacion', key: 'id_areaPk' }, onDelete: 'CASCADE', onUpdate: 'CASCADE' },
     var_cargo: { type: DataTypes.STRING(100), allowNull: false },
     var_jefeInmediato: { type: DataTypes.STRING(100), allowNull: false },
     var_sede: { type: DataTypes.STRING(50), allowNull: false },
@@ -67,11 +67,12 @@ const ProfesionalModel = db.define('tbl_profesional', {
 });
 
 
-// Importar modelos relacionados
+// Importar modelos relacionados 1 a 1 
 ProfesionalModel.belongsTo(UsuarioModel, { foreignKey: 'id_usuarioFK' });
 ProfesionalModel.belongsTo(EpsModel, { foreignKey: 'id_epsFK' });
 ProfesionalModel.belongsTo(FondoPensionModel, { foreignKey: 'id_fondoPensionFK' });
 ProfesionalModel.belongsTo(CuentasBancariasModel, { foreignKey: 'id_cuentaBancariaFK' });
 ProfesionalModel.belongsTo(EstructuraOrgranizacionalModel, { foreignKey: 'id_areaFK' });
+
 
 export default ProfesionalModel;
