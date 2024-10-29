@@ -1,5 +1,6 @@
 import { DataTypes } from "sequelize";
-import db from "../database/db";
+import db from "../database/db.js";
+
 
 const EspaciosHogarModel = db.define('tbl_espacios_hogar', {
     id_espacioHogarPK: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -8,6 +9,6 @@ const EspaciosHogarModel = db.define('tbl_espacios_hogar', {
 }, {
     tableName: 'tbl_espacios_hogar',
     timestamps: true
-})
+});
 
 export default EspaciosHogarModel;

@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import db from "../database/db";
+import db from "../database/db.js";
 
 const EpsModel = db.define('tbl_eps', {
     id_epsPK: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },

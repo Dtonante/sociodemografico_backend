@@ -1,5 +1,5 @@
 import { DataTypes } from "sequelize";
-import db from "../database/db";
+import db from "../database/db.js";
 
 const ServiciosQueNoCuentanModel = db.define('tbl_servicios_que_no_cuentan', {
     id_servicioQueNoCuentaPK: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
@@ -7,6 +7,6 @@ const ServiciosQueNoCuentanModel = db.define('tbl_servicios_que_no_cuentan', {
 }, {
     tableName: 'tbl_servicios_que_no_cuentan',
     timestamps: true
-})
+});
 
 export default ServiciosQueNoCuentanModel;

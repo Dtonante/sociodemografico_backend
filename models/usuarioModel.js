@@ -1,10 +1,10 @@
 import { DataTypes } from "sequelize";
-import db from "../database/db";
+import db from "../database/db.js";
 
 const UsuarioModel = db.define('tbl_usuarios', {
     id_usuarioPK: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     var_nombreCompleto: { type: DataTypes.STRING(50), allowNull: false },
-    int_tipoDocumentoFK: { type: DataTypes.INTEGER, allowNull: false, references: { model: 'tbl_tipo_documento', key: 'id_tipoDocumentoPK' }, onDelete: 'CASCADE', onUpdate: 'CASCADE' },
+    int_tipoDocumentoFK: { type: DataTypes.INTEGER, allowNull: false, references: { model: 'tbl_tipo_documentos', key: 'id_tipoDocumentoPK' }, onDelete: 'CASCADE', onUpdate: 'CASCADE' },
     var_numeroDocumento: { type: DataTypes.STRING(50), allowNull: false },
     var_genero: { type: DataTypes.STRING(50), allowNull: false },
     var_correoElectronicoPersonal: { type: DataTypes.STRING(50), allowNull: false },
@@ -12,6 +12,6 @@ const UsuarioModel = db.define('tbl_usuarios', {
 }, {
     tableName: 'tbl_usuarios',
     timestamps: true
-})
+});
 
 export default UsuarioModel;
