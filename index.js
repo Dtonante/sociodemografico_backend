@@ -4,6 +4,34 @@ import cors from 'cors';
 //funcion para sincronizar los modelos
 import syncDB from './database/syncDB.js';
 
+// importar las rutas
+//Tipo documento rutas
+import tipoDocumentoRoutes from './routes/tipoDocumentoRoutes.js';
+//Eps rutas
+import epsRoutes from './routes/epsRoutes.js';
+//Espacios rutas
+import espaciosHogarRoutes from './routes/espaciosHogarRoutes.js';
+//Servicios con los que no cuentan rutas
+import serviciosQueNoCuentanRoutes from './routes/servicioQueNoCuentanRoutes.js';
+//Factores de riesgo rutas
+import factoresDeRiesgoRouter from './routes/factoresDeRiesgoRoutes.js'
+//Tiempo libre rutas
+import tiempoLibreRoutes from './routes/tiempoLibreRoutes.js'
+//Servicios de salud adicional rutas
+import servicioSaludAdicionalRoutes from './routes/servicioSaludAdicionalRoutes.js'
+//Antecedentes medicos rutas
+import antecedentesMedicosRoutes from './routes/antecedentesMedicosRoutes.js';
+//Fondos de pension rutas
+import fondoPensionRoutes from './routes/fondoPensionRoutes.js';
+//Estructura organizacional rutas
+import estructuraOrganizacionalRoutes from './routes/estructuraOrganizacionalRoutes.js';
+//Tipos de cuentas bancarias rutas
+import cuentasBancariasRoutes from './routes/cuentasBancariasRoutes.js';
+//Transporte propio rutas
+import transportePropioRoutes from './routes/transportePropioRoutes.js';
+//Usuarios rutas
+import usuariosRoutes from './routes/usuariosRoutes.js';
+
 
 const app = express();
 
@@ -14,6 +42,34 @@ app.use(express.static(path.join(process.cwd())));
 
 // Middleware para analizar cuerpos JSON
 app.use(express.json()); 
+
+//Rutas de cada modelo
+//Tipo documento
+app.use('/tipodocumentos', tipoDocumentoRoutes);
+//Eps
+app.use('/eps', epsRoutes);
+//Espacios
+app.use('/espacios', espaciosHogarRoutes);
+//Servicios con los que no cuentan
+app.use('/serviciosQueNoCuentan', serviciosQueNoCuentanRoutes);
+//Factores de riesgo
+app.use('/factoresRiesgo', factoresDeRiesgoRouter);
+//Tiempo libre
+app.use('/tiempoLibre', tiempoLibreRoutes);
+//Servicios de salud adicional
+app.use('/servicioSaludAdicional', servicioSaludAdicionalRoutes);
+//Antecedentes medicos
+app.use('/antecedentesMedicos', antecedentesMedicosRoutes);
+//Fondos de pension 
+app.use('/fondoPension', fondoPensionRoutes);
+//Estructura organizacional
+app.use('/estructuraOrganizacional', estructuraOrganizacionalRoutes);
+//Tipos de cuentas bancarias
+app.use('/cuentasBancarias', cuentasBancariasRoutes);
+//transporte propio
+app.use('/transportePropio', transportePropioRoutes);
+//Usuarios
+app.use('/usuarios', usuariosRoutes);
 
 
 

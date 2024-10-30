@@ -20,7 +20,7 @@ import ProfesionalAntecedentesMedicosModel from "../models/profesionalAntecedent
 import ProfesionalEspacioHogarModel from "../models/profesionalEspacioHogarModel.js";
 import ProfesionalFactoresRiesgo from "../models/profesionalFactoresDeRiesgoModel.js";
 import ProfesionalServiciosQueNoCuentan from "../models/profesionalServiciosQueNoCuentanModel.js";
-import ProfesionalTiempoLibreModel from "../models/timpoLibreModel.js";
+import ProfesionalTiempoLibreModel from "../models/profesionalTiempoLibreModel.js";
 import ProfesionalTransportePropio from "../models/profesionalTransportePropioModel.js";
 
 
