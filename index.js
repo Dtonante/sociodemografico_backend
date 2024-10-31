@@ -99,7 +99,7 @@ app.use('/profesionalServicioSaludAdicional', profesionalServicioSaludAdicionalR
 //Profesional servicio que no cuentan
 app.use('/profesionalServiciosQueNoCuentan', profesionalServiciosQueNoCuentanRoutes);
 //Profesional tiempo libre
-app.use('/profesionalTiempoLibreRoutes', profesionalTiempoLibreRoutes);
+app.use('/profesionalTiempoLibre', profesionalTiempoLibreRoutes);
 
 
 
