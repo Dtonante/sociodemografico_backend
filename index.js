@@ -31,6 +31,12 @@ import cuentasBancariasRoutes from './routes/cuentasBancariasRoutes.js';
 import transportePropioRoutes from './routes/transportePropioRoutes.js';
 //Usuarios rutas
 import usuariosRoutes from './routes/usuariosRoutes.js';
+//Profesional rutas
+import profesionalRoutes from './routes/profesionalRoutes.js';
+//Profesional antecedentes medicos rutas
+import profesionalAntecedentesMedicosRoutes from './routes/profesionalAntecedentesMedicosRoutes.js';
+//Profesional espacios del hogar rutas
+import profesionalEspacioHogarRoutes from './routes/profesionalEspacioHogarRoutes.js';
 
 
 const app = express();
@@ -70,6 +76,12 @@ app.use('/cuentasBancarias', cuentasBancariasRoutes);
 app.use('/transportePropio', transportePropioRoutes);
 //Usuarios
 app.use('/usuarios', usuariosRoutes);
+//Profesional
+app.use('/profesional', profesionalRoutes);
+//Profesional antecedente medico
+app.use('/profesionalAntecedenteMedico', profesionalAntecedentesMedicosRoutes);
+//Profesional espacio hogar medico
+app.use('/profesionalEspacioHogar', profesionalEspacioHogarRoutes);
 
 
 

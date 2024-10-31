@@ -1,65 +1,65 @@
 import ProfesionalModel from "../models/profesionalModel.js";
 
-// Crear un nuevo espacio
-export const crearEspacio = async (req, res) => {
+// Crear un nuevo profesional
+export const crearProfesional = async (req, res) => {
     try {
         const nuevoProfesional = await ProfesionalModel.create(req.body);
         res.status(201).json(nuevoProfesional);
     } catch (error) {
-        res.status(500).json({ message: 'Error al crear el espacio', error });
+        res.status(500).json({ message: 'Error al crear el profesional', error });
     }
 };
 
-// Obtener todos los espacios
-export const obtenerEspacios = async (req, res) => {
+// Obtener todos los profesionales
+export const obtenerProfesionales = async (req, res) => {
     try {
         const diferentesProfesionales = await ProfesionalModel.findAll();
         res.status(200).json(diferentesProfesionales);
     } catch (error) {
-        res.status(500).json({ message: 'Error al obtener los espacios', error });
+        res.status(500).json({ message: 'Error al obtener los profesionales', error });
     }
 };
 
-// Obtener un espacio por su ID
-export const obtenerEspacioPorId = async (req, res) => {
+// Obtener un profesional por su ID
+export const obtenerProfesionalPorId = async (req, res) => {
     try {
-        const profesional = await ProfesionalModel.findByPk(req.params.id_espacioHogarPK);
+        const profesional = await ProfesionalModel.findByPk(req.params.id_profesionalPK);
         if (profesional) {
             res.status(200).json(profesional);
         } else {
-            res.status(404).json({ message: 'Espacio no encontrado' });
+            res.status(404).json({ message: 'Profesional no encontrado' });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Error al obtener el espacio', error });
+        res.status(500).json({ message: 'Error al obtener el profesional', error });
     }
 };
 
-// Actualizar un espacio por su ID
-export const actualizarEspacio = async (req, res) => {
+// Actualizar un profesional por su ID
+export const actualizarProfesional = async (req, res) => {
     try {
-        const profesional = await ProfesionalModel.findByPk(req.params.id_profesionalHogarPK);
+        const profesional = await ProfesionalModel.findByPk(req.params.id_profesionalPK);
         if (profesional) {
             await profesional.update(req.body);
             res.status(200).json(profesional);
         } else {
-            res.status(404).json({ message: 'Espacio no encontrado' });
+            res.status(404).json({ message: 'Profesional no encontrado' });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Error al actualizar el espacio', error });
+        res.status(500).json({ message: 'Error al actualizar el profesional', error });
     }
 };
 
-// Eliminar un espacio por su ID
-export const eliminarEspacio = async (req, res) => {
+// Eliminar un profesional por su ID
+export const eliminarProfesional = async (req, res) => {
     try {
-        const profesional = await ProfesionalModel.findByPk(req.params.id_profesionalHogarPK);
+        const profesional = await ProfesionalModel.findByPk(req.params.id_profesionalPK);
         if (profesional) {
             await profesional.destroy();
-            res.status(204).json({ message: 'profesional eliminado' });
+            res.status(204).json({ message: 'Profesional eliminado' });
         } else {
-            res.status(404).json({ message: 'Espacio no encontrado' });
+            res.status(404).json({ message: 'Profesional no encontrado' });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Error al eliminar el espacio', error });
+        res.status(500).json({ message: 'Error al eliminar el profesional', error });
     }
 };
