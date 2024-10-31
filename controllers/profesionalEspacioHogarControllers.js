@@ -11,18 +11,18 @@ export const crearProfesionalEspacioHogar = async (req, res) => {
     }
 };
 
-// Obtener todos los profecionales-antecedentes medicos
+// Obtener todos los profecionales-espacio del hogar
 export const obtenerProfesionalesEspaciosHogar = async (req, res) => {
     try {
         const diferentesProfesionalesEspacioHogar = await ProfesionalEspacioHogarModel.findAll();
         res.status(200).json(diferentesProfesionalesEspacioHogar);
     } catch (error) {
-        res.status(500).json({ message: 'Error al obtener los profecionales-antecedentes medicos', error });
+        res.status(500).json({ message: 'Error al obtener los profecionales-espacio del hogar', error });
     }
 };
 
 
-// Obtener todos los antecedentes médicos de un profesional por su ID
+// Obtener todos los espacio del hogar de un profesional por su ID
 export const obtenerProfesionalEspacioHogarPorId = async (req, res) => {
     try {
         const profesionalEspacioHogar = await ProfesionalEspacioHogarModel.findAll({
@@ -32,31 +32,14 @@ export const obtenerProfesionalEspacioHogarPorId = async (req, res) => {
         if (profesionalEspacioHogar.length > 0) {
             res.status(200).json(profesionalEspacioHogar);
         } else {
-            res.status(404).json({ message: 'No se encontraron antecedentes médicos para este profesional' });
+            res.status(404).json({ message: 'No se encontraron espacio del hogar para este profesional' });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Error al obtener los antecedentes médicos', error });
+        res.status(500).json({ message: 'Error al obtener los espacio del hogar', error });
     }
 };
 
-// // Actualizar un profecional-espacio del hogar por su ID
-// export const actualizarProfesionalEspacioHogar = async (req, res) => {
-//     try {
-//         const profesionalEspacioHogar = await ProfesionalEspacioHogarModel.findByPk(req.params.id_profesionalFK);
-//         if (profesionalEspacioHogar) {
-//             await profesionalEspacioHogar.update(req.body);
-//             res.status(200).json(profesionalEspacioHogar);
-//         } else {
-//             res.status(404).json({ message: 'Profecional-espacio del hogar no encontrado' });
-//         }
-//     } catch (error) {
-//         res.status(500).json({ message: 'Error al actualizar el Profecional-espacio del hogar', error });
-//     }
-// };
-
-
-
-// Eliminar un antecedente médico específico de un profesional por su ID
+// Eliminar un espacio del hogar específico de un profesional por su ID
 export const eliminarProfesionalEspacioHogar = async (req, res) => {
     const { id_profesionalFK, id_espacioHogarFK } = req.params;
 

@@ -38,22 +38,6 @@ export const obtenerProfesionalAntecedenteMedicoPorId = async (req, res) => {
     }
 };
 
-
-// // Actualizar un profecional-antecedente medico por su ID
-// export const actualizarProfesionalAntecedenteMedico = async (req, res) => {
-//     try {
-//         const profesionalAntecedenteMedico = await ProfesionalAntecedentesMedicosModel.findByPk(req.params.id_profesionalFK);
-//         if (profesionalAntecedenteMedico) {
-//             await profesionalAntecedenteMedico.update(req.body);
-//             res.status(200).json(profesionalAntecedenteMedico);
-//         } else {
-//             res.status(404).json({ message: 'Profecional-antecedente medico no encontrado' });
-//         }
-//     } catch (error) {
-//         res.status(500).json({ message: 'Error al actualizar el Profecional-antecedente medico', error });
-//     }
-// };
-
 // Eliminar un antecedente médico específico de un profesional por su ID
 export const eliminarProfesionalAntecedenteMedico = async (req, res) => {
     const { id_profesionalFK, id_antecedenteMedicoFK } = req.params;

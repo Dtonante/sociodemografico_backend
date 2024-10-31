@@ -37,6 +37,14 @@ import profesionalRoutes from './routes/profesionalRoutes.js';
 import profesionalAntecedentesMedicosRoutes from './routes/profesionalAntecedentesMedicosRoutes.js';
 //Profesional espacios del hogar rutas
 import profesionalEspacioHogarRoutes from './routes/profesionalEspacioHogarRoutes.js';
+//Profesional factores de riesgo rutas
+import profesionalFactoresDeRiesgoRoutes from './routes/profesionalFactoresDeRiesgoRoutes.js';
+//Profesional servicio rutas
+import profesionalServicioSaludAdicionalRoutes from './routes/profesionalServicioSaludAdicionalRoutes.js';
+//Profesional servicio que no cuentan rutas
+import profesionalServiciosQueNoCuentanRoutes from './routes/profesionalServiciosQueNoCuentanRoutes.js';
+
+
 
 
 const app = express();
@@ -82,7 +90,12 @@ app.use('/profesional', profesionalRoutes);
 app.use('/profesionalAntecedenteMedico', profesionalAntecedentesMedicosRoutes);
 //Profesional espacio hogar medico
 app.use('/profesionalEspacioHogar', profesionalEspacioHogarRoutes);
-
+//Profesional factores de riesgo medico
+app.use('/profesionalFactoresRiesgo', profesionalFactoresDeRiesgoRoutes);
+//Profesional servicio de salud adicional
+app.use('/profesionalServicioSaludAdicional', profesionalServicioSaludAdicionalRoutes);
+//Profesional servicio que no cuentan
+app.use('/profesionalServiciosQueNoCuentan', profesionalServiciosQueNoCuentanRoutes);
 
 
 // Sincronizar la base de datos antes de iniciar el servidor
