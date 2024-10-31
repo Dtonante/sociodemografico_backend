@@ -43,6 +43,8 @@ import profesionalFactoresDeRiesgoRoutes from './routes/profesionalFactoresDeRie
 import profesionalServicioSaludAdicionalRoutes from './routes/profesionalServicioSaludAdicionalRoutes.js';
 //Profesional servicio que no cuentan rutas
 import profesionalServiciosQueNoCuentanRoutes from './routes/profesionalServiciosQueNoCuentanRoutes.js';
+//Profesional tiempo libre rutas
+import profesionalTiempoLibreRoutes from './routes/profesionalTiempoLibreRoutes.js';
 
 
 
@@ -96,6 +98,9 @@ app.use('/profesionalFactoresRiesgo', profesionalFactoresDeRiesgoRoutes);
 app.use('/profesionalServicioSaludAdicional', profesionalServicioSaludAdicionalRoutes);
 //Profesional servicio que no cuentan
 app.use('/profesionalServiciosQueNoCuentan', profesionalServiciosQueNoCuentanRoutes);
+//Profesional tiempo libre
+app.use('/profesionalTiempoLibreRoutes', profesionalTiempoLibreRoutes);
+
 
 
 // Sincronizar la base de datos antes de iniciar el servidor

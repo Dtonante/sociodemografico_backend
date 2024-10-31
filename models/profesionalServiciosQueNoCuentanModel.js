@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import db from "../database/db.js";
 import ProfesionalModel from "./profesionalModel.js";
-import ServicioSaludAdicionalModel from "./servicioSaludAdicionalModel.js";
+import ServiciosQueNoCuentanModel from "./serviciosQueNoCuentanModel.js";
 
 
 const ProfesionalServiciosQueNoCuentan = db.define('tbl_profesional_servicios_que_no_cuentan', {
@@ -14,6 +14,6 @@ const ProfesionalServiciosQueNoCuentan = db.define('tbl_profesional_servicios_qu
 
 // Importar modelos relacionados
 ProfesionalServiciosQueNoCuentan.belongsTo(ProfesionalModel, { foreignKey: 'id_profesionalFK' });
-ProfesionalServiciosQueNoCuentan.belongsTo(ServicioSaludAdicionalModel, { foreignKey: 'id_servicioQueNoCuentaFK' });
+ProfesionalServiciosQueNoCuentan.belongsTo(ServiciosQueNoCuentanModel, { foreignKey: 'id_servicioQueNoCuentaFK' });
 
 export default ProfesionalServiciosQueNoCuentan;
