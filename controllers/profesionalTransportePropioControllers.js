@@ -2,7 +2,7 @@ import ProfesionalTransportePropioModel from "../models/profesionalTransportePro
 import TransportePropioModel from "../models/transportePropioModel.js";
 
 // Crear un nuevo profecional-transporte propio
-export const crearProfesionalEspacioHogar = async (req, res) => {
+export const crearProfesionalTransportePropio = async (req, res) => {
     try {
         const nuevoProfesionalTransportePropio = await ProfesionalTransportePropioModel.create(req.body);
         res.status(201).json(nuevoProfesionalTransportePropio);
@@ -12,7 +12,7 @@ export const crearProfesionalEspacioHogar = async (req, res) => {
 };
 
 // Obtener todos los profecionales-transporte propio
-export const obtenerProfesionalesEspaciosHogar = async (req, res) => {
+export const obtenerProfesionalesTransportePropio = async (req, res) => {
     try {
         const diferentesProfesionalesTransportePropio = await ProfesionalTransportePropioModel.findAll();
         res.status(200).json(diferentesProfesionalesTransportePropio);
@@ -23,7 +23,7 @@ export const obtenerProfesionalesEspaciosHogar = async (req, res) => {
 
 
 // Obtener todos los transporte propio de un profesional por su ID
-export const obtenerProfesionalEspacioHogarPorId = async (req, res) => {
+export const obtenerProfesionalTransportePropioPorId = async (req, res) => {
     try {
         const profesionalesTransportePropio = await ProfesionalTransportePropioModel.findAll({
             where: { id_profesionalFK: req.params.id_profesionalFK },
@@ -40,7 +40,7 @@ export const obtenerProfesionalEspacioHogarPorId = async (req, res) => {
 };
 
 // Eliminar un transporte propio específico de un profesional por su ID
-export const eliminarProfesionalEspacioHogar = async (req, res) => {
+export const eliminarProfesionalTransportePropio = async (req, res) => {
     const { id_profesionalFK, id_transportePropioFK } = req.params;
 
     try {

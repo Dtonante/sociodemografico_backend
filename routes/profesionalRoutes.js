@@ -9,4 +9,4 @@ router.get('/:id_profesionalPK', obtenerProfesionalPorId);
 router.put('/:id_profesionalPK', actualizarProfesional);
 router.delete('/:id_profesionalPK', eliminarProfesional);
 
-export default router;
+export default router

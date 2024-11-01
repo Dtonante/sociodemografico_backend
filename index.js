@@ -45,6 +45,8 @@ import profesionalServicioSaludAdicionalRoutes from './routes/profesionalServici
 import profesionalServiciosQueNoCuentanRoutes from './routes/profesionalServiciosQueNoCuentanRoutes.js';
 //Profesional tiempo libre rutas
 import profesionalTiempoLibreRoutes from './routes/profesionalTiempoLibreRoutes.js';
+//Profesional transporte propio rutas
+import profesionalTransportePropioRoutes from './routes/profesionalTransportePropioRoutes.js';
 
 
 
@@ -100,6 +102,8 @@ app.use('/profesionalServicioSaludAdicional', profesionalServicioSaludAdicionalR
 app.use('/profesionalServiciosQueNoCuentan', profesionalServiciosQueNoCuentanRoutes);
 //Profesional tiempo libre
 app.use('/profesionalTiempoLibre', profesionalTiempoLibreRoutes);
+//Profesional transporte propio
+app.use('/profesionalTransportePropio', profesionalTransportePropioRoutes);
 
 
 
