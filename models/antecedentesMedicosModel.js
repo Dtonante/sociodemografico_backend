@@ -7,7 +7,7 @@ const AntecedentesMedicosModel = db.define('tbl_antecedentes_medicos', {
     var_nombreAntecedenteMedico: { type: DataTypes.STRING(255), allowNull: false }
 }, {
     tableName: 'tbl_antecedentes_medicos',
-    timestamps: true
+    timestamps: false
 });
 
 

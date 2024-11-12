@@ -7,7 +7,7 @@ const TransportePropioModel = db.define('tbl_transporte_propio', {
     var_numeroPlaca: { type: DataTypes.STRING(20), defaultValue: 'No Aplica' }
 }, {
     tableName: 'tbl_transporte_propio',
-    timestamps: true
+    timestamps: false
 });
 
 export default TransportePropioModel;

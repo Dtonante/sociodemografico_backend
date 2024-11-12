@@ -9,8 +9,6 @@ import syncDB from './database/syncDB.js';
 import tipoDocumentoRoutes from './routes/tipoDocumentoRoutes.js';
 //Eps rutas
 import epsRoutes from './routes/epsRoutes.js';
-//Espacios rutas
-import espaciosHogarRoutes from './routes/espaciosHogarRoutes.js';
 //Servicios con los que no cuentan rutas
 import serviciosQueNoCuentanRoutes from './routes/servicioQueNoCuentanRoutes.js';
 //Factores de riesgo rutas
@@ -35,8 +33,6 @@ import usuariosRoutes from './routes/usuariosRoutes.js';
 import profesionalRoutes from './routes/profesionalRoutes.js';
 //Profesional antecedentes medicos rutas
 import profesionalAntecedentesMedicosRoutes from './routes/profesionalAntecedentesMedicosRoutes.js';
-//Profesional espacios del hogar rutas
-import profesionalEspacioHogarRoutes from './routes/profesionalEspacioHogarRoutes.js';
 //Profesional factores de riesgo rutas
 import profesionalFactoresDeRiesgoRoutes from './routes/profesionalFactoresDeRiesgoRoutes.js';
 //Profesional servicio rutas
@@ -66,8 +62,6 @@ app.use(express.json());
 app.use('/tipodocumentos', tipoDocumentoRoutes);
 //Eps
 app.use('/eps', epsRoutes);
-//Espacios
-app.use('/espacios', espaciosHogarRoutes);
 //Servicios con los que no cuentan
 app.use('/serviciosQueNoCuentan', serviciosQueNoCuentanRoutes);
 //Factores de riesgo
@@ -92,8 +86,7 @@ app.use('/usuarios', usuariosRoutes);
 app.use('/profesional', profesionalRoutes);
 //Profesional antecedente medico
 app.use('/profesionalAntecedenteMedico', profesionalAntecedentesMedicosRoutes);
-//Profesional espacio hogar medico
-app.use('/profesionalEspacioHogar', profesionalEspacioHogarRoutes);
+
 //Profesional factores de riesgo medico
 app.use('/profesionalFactoresRiesgo', profesionalFactoresDeRiesgoRoutes);
 //Profesional servicio de salud adicional
@@ -117,3 +110,4 @@ syncDB().then(() => {
 }).catch((error) => {
     console.error('Error al sincronizar la base de datos:', error);
 });
+

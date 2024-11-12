@@ -6,7 +6,7 @@ const RolModel = db.define('tbl_roles', {
     var_nombreRol: { type: DataTypes.STRING(50), allowNull: false, unique: true }
 }, {
     tableName: 'tbl_roles',
-    timestamps: true
+    timestamps: false
 });
 
 export default RolModel;

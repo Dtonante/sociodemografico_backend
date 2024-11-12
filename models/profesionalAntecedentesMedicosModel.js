@@ -8,7 +8,7 @@ const ProfesionalAntecedentesMedicosModel = db.define('tbl_profesional_anteceden
     id_antecedenteMedicoFK: { type: DataTypes.INTEGER, primaryKey: true, references: { model: 'tbl_antecedentes_medicos', key: 'id_antecedenteMedicoPK' }, onDelete: 'CASCADE', onUpdate: 'CASCADE' } 
 }, {
     tableName: 'tbl_profesional_antecedentes_medicos',
-    timestamps: true
+    timestamps: false
 });
 
 // Importar modelos relacionados

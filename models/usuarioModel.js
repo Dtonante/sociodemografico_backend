@@ -13,7 +13,7 @@ const UsuarioModel = db.define('tbl_usuarios', {
     var_correoElectronicoInstitucional: { type: DataTypes.STRING(50), allowNull: false }
 }, {
     tableName: 'tbl_usuarios',
-    timestamps: true
+    timestamps: false
 });
 
 // Importar modelos relacionados

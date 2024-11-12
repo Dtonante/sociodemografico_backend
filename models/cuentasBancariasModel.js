@@ -6,7 +6,7 @@ const CuentasBancariasModel = db.define('tbl_cuentas_bancarias', {
     var_nombreCuentaBancaria: { type: DataTypes.STRING(50), allowNull: false }
 }, {
     tableName: 'tbl_cuentas_bancarias',
-    timestamps: true
+    timestamps: false
 })
 
 export default CuentasBancariasModel;

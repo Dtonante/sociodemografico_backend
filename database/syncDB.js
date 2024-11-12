@@ -8,7 +8,6 @@ import FondoPensionModel from "../models/fondoPensionModel.js";
 import CuentasBancariasModel from "../models/cuentasBancariasModel.js";
 import EstructuraOrgranizacionalModel from "../models/estructuraOrganizacionalModel.js";
 import AntecedentesMedicosModel from "../models/antecedentesMedicosModel.js";
-import EspaciosHogarModel from "../models/espaciosHogarModel.js";
 import ServiciosQueNoCuentanModel from "../models/serviciosQueNoCuentanModel.js";
 import FactoresDeRiesgoModel from "../models/factoresDeRiesgoModel.js";
 import TransportePropioModel from "../models/transportePropioModel.js";
@@ -17,7 +16,6 @@ import UsuarioModel from "../models/usuarioModel.js";
 import ProfesionalModel from "../models/profesionalModel.js"
 import ProfesionalServicioSaludAdicionalModel from "../models/profesionalServicioSaludAdicionalModel.js"
 import ProfesionalAntecedentesMedicosModel from "../models/profesionalAntecedentesMedicosModel.js"
-import ProfesionalEspacioHogarModel from "../models/profesionalEspacioHogarModel.js";
 import ProfesionalFactoresRiesgo from "../models/profesionalFactoresDeRiesgoModel.js";
 import ProfesionalServiciosQueNoCuentan from "../models/profesionalServiciosQueNoCuentanModel.js";
 import ProfesionalTiempoLibreModel from "../models/profesionalTiempoLibreModel.js";

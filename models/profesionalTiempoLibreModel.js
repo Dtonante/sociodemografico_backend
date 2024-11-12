@@ -9,7 +9,7 @@ const ProfesionalTiempoLibreModel = db.define('tbl_profesional_tiempo_libre', {
     id_tiempoLibreFK: { type: DataTypes.INTEGER, primaryKey: true, references: { model: 'tbl_tiempo_libre', key: 'id_tiempoLibrePK' }, onDelete: 'CASCADE', onUpdate: 'CASCADE' }
 }, {
     tableName: 'tbl_profesional_tiempo_libre',
-    timestamps: true
+    timestamps: false
 });
 
 // Importar modelos relacionados

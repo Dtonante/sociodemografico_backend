@@ -7,7 +7,7 @@ const PrivilegioModel = db.define('tbl_privilegios', {
     var_descripcion: { type: DataTypes.STRING(100), allowNull: true }
 }, {
     tableName: 'tbl_privilegios',
-    timestamps: true
+    timestamps: false
 });
 
 export default PrivilegioModel;

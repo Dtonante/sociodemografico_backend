@@ -9,7 +9,7 @@ const ProfesionalTransportePropio = db.define('tbl_Profesional_transporte_propio
     var_numeroPlaca: { type: DataTypes.STRING(20), defaultValue: 'No Aplica' }
 }, {
     tableName: 'tbl_Profesional_transporte_propio',
-    timestamps: true
+    timestamps: false
 });
 
 // Importar modelos relacionados

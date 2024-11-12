@@ -8,7 +8,7 @@ const ProfesionalServicioSaludAdicionalModel = db.define('tbl_profesional_servic
     id_ServicioDeSaludAdicionalFK: { type: DataTypes.INTEGER, primaryKey: true, references: { model: 'tbl_servicios_salud_adicional', key: 'id_servicioDeSaludAdicionalPK' }, onDelete: 'CASCADE', onUpdate: 'CASCADE' }
 }, {
     tableName: 'tbl_profesional_servicio_salud_adicional',
-    timestamps: true
+    timestamps: false
 });
 
 // Importar modelos relacionados

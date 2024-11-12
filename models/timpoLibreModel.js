@@ -6,7 +6,7 @@ const TiempoLibreModel = db.define('tbl_tiempo_libre', {
     var_nombreOcuapacionTiempoLibre: { type: DataTypes.STRING(255), allowNull: false }
 }, {
     tableName: 'tbl_tiempo_libre',
-    timestamps: true
+    timestamps: false
 });
 
 export default TiempoLibreModel;

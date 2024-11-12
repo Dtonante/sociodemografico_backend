@@ -6,7 +6,7 @@ const FactoresDeRiesgoModel = db.define('tbl_factores_riesgo', {
     var_nombreRiesgo: { type: DataTypes.STRING(255), allowNull: false }
 }, {
     tableName: 'tbl_factores_riesgo',
-    timestamps: true
+    timestamps: false
 });
 
 export default FactoresDeRiesgoModel;

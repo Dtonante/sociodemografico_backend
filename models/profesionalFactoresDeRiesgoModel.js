@@ -8,7 +8,7 @@ const ProfesionalFactoresRiesgo = db.define('tbl_profesional_factores_riesgo', {
     id_factoresRiesgoFK: { type: DataTypes.INTEGER, primaryKey: true, references: { model: 'tbl_factores_riesgo', key: 'id_factoresRiesgoPK' } }
 }, {
     tableName: 'tbl_profesional_factores_riesgo',
-    timestamps: true
+    timestamps: false
 });
 
 // Importar modelos relacionados
