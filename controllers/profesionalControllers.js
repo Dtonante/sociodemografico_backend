@@ -1,8 +1,27 @@
 import ProfesionalModel from "../models/profesionalModel.js";
 
+// // Crear un nuevo profesional
+// export const crearProfesional = async (req, res) => {
+//     try {
+//         const nuevoProfesional = await ProfesionalModel.create(req.body);
+//         res.status(201).json(nuevoProfesional);
+//     } catch (error) {
+//         res.status(500).json({ message: 'Error al crear el profesional', error });
+//     }
+// };
+
 // Crear un nuevo profesional
 export const crearProfesional = async (req, res) => {
     try {
+        // Verificar si ya existe un profesional con el mismo id_usuarioFK
+        const { id_usuarioFK } = req.body;
+        const profesionalExistente = await ProfesionalModel.findOne({ where: { id_usuarioFK } });
+
+        if (profesionalExistente) {
+            return res.status(400).json({ message: 'El profesional ya ha sido creado con este usuario.' });
+        }
+
+        // Si no existe, proceder con la creación
         const nuevoProfesional = await ProfesionalModel.create(req.body);
         res.status(201).json(nuevoProfesional);
     } catch (error) {
