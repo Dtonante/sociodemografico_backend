@@ -43,6 +43,11 @@ import profesionalServiciosQueNoCuentanRoutes from './routes/profesionalServicio
 import profesionalTiempoLibreRoutes from './routes/profesionalTiempoLibreRoutes.js';
 //Profesional transporte propio rutas
 import profesionalTransportePropioRoutes from './routes/profesionalTransportePropioRoutes.js';
+//login rutas
+import loginRoutes from './routes/loginRoutes.js'
+//certificados rutas
+import certificadosRoutes from './routes/certificadoRoutes.js';
+
 
 
 
@@ -86,7 +91,6 @@ app.use('/usuarios', usuariosRoutes);
 app.use('/profesional', profesionalRoutes);
 //Profesional antecedente medico
 app.use('/profesionalAntecedenteMedico', profesionalAntecedentesMedicosRoutes);
-
 //Profesional factores de riesgo medico
 app.use('/profesionalFactoresRiesgo', profesionalFactoresDeRiesgoRoutes);
 //Profesional servicio de salud adicional
@@ -97,6 +101,11 @@ app.use('/profesionalServiciosQueNoCuentan', profesionalServiciosQueNoCuentanRou
 app.use('/profesionalTiempoLibre', profesionalTiempoLibreRoutes);
 //Profesional transporte propio
 app.use('/profesionalTransportePropio', profesionalTransportePropioRoutes);
+//Login
+app.use('/login', loginRoutes);
+//Certificados
+app.use('/certificados', certificadosRoutes);
+
 
 
 

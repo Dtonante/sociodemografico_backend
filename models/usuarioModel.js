@@ -10,7 +10,8 @@ const UsuarioModel = db.define('tbl_usuarios', {
     var_numeroDocumento: { type: DataTypes.STRING(50), allowNull: false },
     var_genero: { type: DataTypes.STRING(50), allowNull: false },
     var_correoElectronicoPersonal: { type: DataTypes.STRING(50), allowNull: false },
-    var_correoElectronicoInstitucional: { type: DataTypes.STRING(50), allowNull: false }
+    var_correoElectronicoInstitucional: { type: DataTypes.STRING(50), allowNull: false },
+    var_contrasena: { type: DataTypes.STRING(255), allowNull: false }
 }, {
     tableName: 'tbl_usuarios',
     timestamps: false
