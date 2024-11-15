@@ -29,7 +29,6 @@ export default db;
 // const db = new Sequelize('db_perfil_sociodemografico', 'sa', 'Esumer2024**', {
 //     host: '10.1.2.24',
 //     dialect: 'mssql',
-//     port: 1434,
 //     dialectOptions: {
 //         instanceName: null,
 //         encrypt: true,
