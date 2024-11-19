@@ -47,6 +47,10 @@ import profesionalTransportePropioRoutes from './routes/profesionalTransportePro
 import loginRoutes from './routes/loginRoutes.js'
 //certificados rutas
 import certificadosRoutes from './routes/certificadoRoutes.js';
+//roles rutas
+import rolesRoutes from './routes/rolesRoutes.js'
+//privilegios rutas
+import privilegioRoutes from './routes/privilegiosRoutes.js'
 
 
 
@@ -105,6 +109,10 @@ app.use('/profesionalTransportePropio', profesionalTransportePropioRoutes);
 app.use('/login', loginRoutes);
 //Certificados
 app.use('/certificados', certificadosRoutes);
+//roles
+app.use('/roles', rolesRoutes);
+//privilegios
+app.use('/privilegio', privilegioRoutes);
 
 
 

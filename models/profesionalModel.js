@@ -57,7 +57,8 @@ const ProfesionalModel = db.define('tbl_profesional', {
     set_pasoMayorTiempoLibre: { type: DataTypes.STRING(255), allowNull: false },
     var_peso: { type: DataTypes.STRING(25), allowNull: false },
     var_altura: { type: DataTypes.STRING(25), allowNull: false },
-    var_urlDatosAdjuntos: { type: DataTypes.STRING(255), allowNull: false }
+    var_urlDatosAdjuntos: { type: DataTypes.STRING(255), allowNull: false },
+    var_correoElectronicoInstitucional: { type: DataTypes.STRING(50), allowNull: false }
 
 
 }, {
