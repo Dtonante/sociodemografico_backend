@@ -18,8 +18,10 @@ const ProfesionalModel = db.define('tbl_profesional', {
     var_tipoVivienda: { type: DataTypes.STRING(25), allowNull: false },
     var_estadoCivil: { type: DataTypes.STRING(50), allowNull: false },
     boolean_viveSolo: { type: DataTypes.BOOLEAN, allowNull: false },
+    var_numeroPersonasConLasQueVive: { type: DataTypes.STRING(10), allowNull: false },
     set_personasConLasQueVive: { type: DataTypes.STRING(255), allowNull: false },
     boolean_viveConMascotas: { type: DataTypes.BOOLEAN, allowNull: false },
+    set_tipoMascotas: { type: DataTypes.STRING(150), allowNull: false },
     var_personasDependeciaEconimica: { type: DataTypes.STRING(20), allowNull: false },
     var_totalIngresosPropiosYGrupoFamiliar: { type: DataTypes.STRING(255), allowNull: false },
     var_grupoEtnico: { type: DataTypes.STRING(150), allowNull: false },
@@ -30,7 +32,6 @@ const ProfesionalModel = db.define('tbl_profesional', {
     id_cuentaBancariaFK: { type: DataTypes.INTEGER, allowNull: false, references: { model: 'tbl_cuentas_bancarias', key: 'id_cuentaBancariaPK' }, onDelete: 'CASCADE', onUpdate: 'CASCADE' },
     var_tipoCuenta: { type: DataTypes.STRING(15), allowNull: false },
     var_numeroCuenta: { type: DataTypes.STRING(20), allowNull: false },
-    var_tipoVinculacion: { type: DataTypes.STRING(20), allowNull: false },
     var_tipoContrato: { type: DataTypes.STRING(50), allowNull: false },
     var_salario: { type: DataTypes.STRING(255), allowNull: false },
     date_fechaIngresoInstitucion: { type: DataTypes.DATE, allowNull: false },
@@ -41,7 +42,6 @@ const ProfesionalModel = db.define('tbl_profesional', {
     var_sede: { type: DataTypes.STRING(50), allowNull: false },
     var_celular: { type: DataTypes.STRING(15), allowNull: false },
     var_telefonoFijo: { type: DataTypes.STRING(10), allowNull: false },
-    var_turnoTrabajo: { type: DataTypes.STRING(15), allowNull:false },
     var_nivelEscolaridad: { type: DataTypes.STRING(50), allowNull: false },
     var_nombreCarrera: { type: DataTypes.STRING(150), allowNull: false },
     boolean_actualmenteEstudia: { type: DataTypes.BOOLEAN, allowNull: false },
@@ -58,7 +58,11 @@ const ProfesionalModel = db.define('tbl_profesional', {
     var_peso: { type: DataTypes.STRING(25), allowNull: false },
     var_altura: { type: DataTypes.STRING(25), allowNull: false },
     var_urlDatosAdjuntos: { type: DataTypes.STRING(255), allowNull: false },
-    var_correoElectronicoInstitucional: { type: DataTypes.STRING(50), allowNull: false }
+    var_correoElectronicoInstitucional: { type: DataTypes.STRING(50), allowNull: false },
+    boolean_usaLentes: {  type: DataTypes.BOOLEAN, allowNull: false },
+    boolean_bebidasEnergizantes: { type: DataTypes.BOOLEAN, allowNull: false },
+    var_zonaVivienda: { type: DataTypes.STRING(15), allowNull: false}
+    
 
 
 }, {
