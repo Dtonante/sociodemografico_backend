@@ -1,85 +1,8 @@
-// import { upload } from '../config/multer.js'; 
-// import CertificadoModel from '../models/certificadoModel.js';
-// import fs from 'fs';
-// import path from 'path';
-// import FTP from 'basic-ftp';
-// const subirCertificado = async (req, res) => {
-//     const ftpClient = new FTP.Client(); // Crear una instancia de cliente FTP
-//     try {
-//         const { file } = req;
-
-//         if (!file) {
-//             return res.status(400).json({ message: "No se ha cargado ningún archivo" });
-//         }
-
-//         // Crear un nombre único para el archivo temporal
-//         const tempFileName = `${Date.now()}-${file.originalname}`;
-//         const tempFilePath = path.join('C:/tmp', tempFileName);
-        
-
-//         // Escribir el archivo desde el buffer a un archivo temporal
-//         fs.writeFileSync(tempFilePath, file.buffer);
-
-//         // Conexión al servidor FTP
-//         await ftpClient.access({
-//             host: '10.1.2.24',
-//             port: 16450, 
-//             user: 'administrador',
-//             password: 'nu3v05.n3g0c105*2021',
-//             secure: false, // Cambia a true si necesitas conexión FTP segura
-//         });
-
-//         console.log("Conexión exitosa con el servidor FTP de Anubis.");
-
-//         // Ruta remota en el servidor FTP
-//         const remotePath = `/DATOS_ANUBIS/Documentos_PerfilSocioDemo/${tempFileName}`;
-//         await ftpClient.uploadFrom(tempFilePath, remotePath);
-
-//         console.log("Archivo cargado exitosamente en Anubis.");
-//         ftpClient.close();
-
-//         // Eliminar el archivo temporal después de subirlo
-//         fs.unlinkSync(tempFilePath);
-
-//         res.status(201).json({
-//             message: "Certificado cargado correctamente en Anubis",
-//             fileUrl: `ftp://10.1.2.24${remotePath}`,
-//         });
-//     } catch (error) {
-//         console.error("Error durante la operación con Anubis:", error);
-//         ftpClient.close();
-
-//         res.status(500).json({
-//             message: "Error al cargar el certificado en Anubis",
-//             error: error.message,
-//         });
-//     }
-// };
-
-
 import { upload } from '../config/multer.js'; 
 import CertificadoModel from '../models/certificadoModel.js';
 import fs from 'fs';
 import path from 'path';
 import FTP from 'basic-ftp';
-import crypto from 'crypto';
-
-// Clave secreta para la encriptación (debería ser guardada de forma segura, no en el código)
-const SECRET_KEY = 'tu_clave_secreta_de_256_bits';
-const IV_LENGTH = 16; // La longitud del vector de inicialización para AES
-
-const encryptFile = (buffer) => {
-    // Generar un vector de inicialización aleatorio
-    const iv = crypto.randomBytes(IV_LENGTH);
-    const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(SECRET_KEY), iv);
-
-    // Encriptar el archivo
-    const encryptedBuffer = Buffer.concat([cipher.update(buffer), cipher.final()]);
-
-    // Retornar el buffer cifrado junto con el IV para poder desencriptar luego
-    return { encryptedBuffer, iv };
-};
-
 const subirCertificado = async (req, res) => {
     const ftpClient = new FTP.Client(); // Crear una instancia de cliente FTP
     try {
@@ -89,29 +12,30 @@ const subirCertificado = async (req, res) => {
             return res.status(400).json({ message: "No se ha cargado ningún archivo" });
         }
 
-        // Encriptar el archivo antes de guardarlo
-        const { encryptedBuffer, iv } = encryptFile(file.buffer);
-
         // Crear un nombre único para el archivo temporal
-        const tempFileName = `${Date.now()}-${file.originalname}.enc`; // Añadir extensión .enc para los archivos encriptados
+        const tempFileName = `${Date.now()}-${file.originalname}`;
         const tempFilePath = path.join('C:/tmp', tempFileName);
+        
 
-        // Escribir el archivo cifrado en un archivo temporal
-        fs.writeFileSync(tempFilePath, encryptedBuffer);
+        // Escribir el archivo desde el buffer a un archivo temporal
+        fs.writeFileSync(tempFilePath, file.buffer);
+
+
+        
 
         // Conexión al servidor FTP
         await ftpClient.access({
             host: '10.1.2.24',
-            port: 16450, 
-            user: 'administrador',
-            password: 'nu3v05.n3g0c105*2021',
+            port: 21, 
+            user: 'FTPESUMER',
+            password: '35um3r@dm1n',
             secure: false, // Cambia a true si necesitas conexión FTP segura
         });
 
         console.log("Conexión exitosa con el servidor FTP de Anubis.");
 
         // Ruta remota en el servidor FTP
-        const remotePath = `/DATOS_ANUBIS/Documentos_PerfilSocioDemo/${tempFileName}`;
+        const remotePath = `/${tempFileName}`;
         await ftpClient.uploadFrom(tempFilePath, remotePath);
 
         console.log("Archivo cargado exitosamente en Anubis.");
@@ -134,6 +58,85 @@ const subirCertificado = async (req, res) => {
         });
     }
 };
+
+
+// import { upload } from '../config/multer.js'; 
+// import CertificadoModel from '../models/certificadoModel.js';
+// import fs from 'fs';
+// import path from 'path';
+// import FTP from 'basic-ftp';
+// import crypto from 'crypto';
+
+// // Clave secreta para la encriptación (debería ser guardada de forma segura, no en el código)
+// const SECRET_KEY = 'tu_clave_secreta_de_256_bits';
+// const IV_LENGTH = 16; // La longitud del vector de inicialización para AES
+
+// const encryptFile = (buffer) => {
+//     // Generar un vector de inicialización aleatorio
+//     const iv = crypto.randomBytes(IV_LENGTH);
+//     const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(SECRET_KEY), iv);
+
+//     // Encriptar el archivo
+//     const encryptedBuffer = Buffer.concat([cipher.update(buffer), cipher.final()]);
+
+//     // Retornar el buffer cifrado junto con el IV para poder desencriptar luego
+//     return { encryptedBuffer, iv };
+// };
+
+// const subirCertificado = async (req, res) => {
+//     const ftpClient = new FTP.Client(); // Crear una instancia de cliente FTP
+//     try {
+//         const { file } = req;
+
+//         if (!file) {
+//             return res.status(400).json({ message: "No se ha cargado ningún archivo" });
+//         }
+
+//         // Encriptar el archivo antes de guardarlo
+//         const { encryptedBuffer, iv } = encryptFile(file.buffer);
+
+//         // Crear un nombre único para el archivo temporal
+//         const tempFileName = `${Date.now()}-${file.originalname}.enc`; // Añadir extensión .enc para los archivos encriptados
+//         const tempFilePath = path.join('C:/tmp', tempFileName);
+
+//         // Escribir el archivo cifrado en un archivo temporal
+//         fs.writeFileSync(tempFilePath, encryptedBuffer);
+
+//         // Conexión al servidor FTP
+//         await ftpClient.access({
+//             host: '10.1.1.6',
+//             port: 22, 
+//             user: 'root',
+//             password: '35um3r*53cur3',
+//             secure: false, // Cambia a true si necesitas conexión FTP segura
+//         });
+
+//         console.log("Conexión exitosa con el servidor FTP de Anubis.");
+
+//         // Ruta remota en el servidor FTP
+//         const remotePath = `/var/www/pdf_storage/${tempFileName}`;
+//         await ftpClient.uploadFrom(tempFilePath, remotePath);
+
+//         console.log("Archivo cargado exitosamente en Anubis.");
+//         ftpClient.close();
+
+//         // Eliminar el archivo temporal después de subirlo
+//         fs.unlinkSync(tempFilePath);
+
+//         res.status(201).json({
+//             message: "Certificado cargado correctamente en Anubis",
+//             fileUrl: `ftp://10.1.1.6${remotePath}`,
+//         });
+//     } catch (error) {
+//         console.error("Error durante la operación con Anubis:", error);
+//         ftpClient.close();
+
+//         res.status(500).json({
+//             message: "Error al cargar el certificado en Anubis",
+//             error: error.message,
+//         });
+//     }
+// };
 
 
 
