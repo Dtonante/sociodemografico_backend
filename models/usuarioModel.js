@@ -13,14 +13,15 @@ const UsuarioModel = db.define('tbl_usuarios', {
     var_numeroDocumento: { type: DataTypes.STRING(50), allowNull: false },
     var_genero: { type: DataTypes.STRING(50), allowNull: false },
     var_correoElectronicoPersonal: { type: DataTypes.STRING(50), allowNull: false },
-    var_contrasena: { type: DataTypes.STRING(255), allowNull: false }
+    var_contrasena: { type: DataTypes.STRING(255), allowNull: false },
+    var_contactoEmergencia: { type: DataTypes.STRING(50), allowNull: false }
 }, {
     tableName: 'tbl_usuarios',
     timestamps: false
 });
 
 // Importar modelos relacionados
-UsuarioModel.belongsTo(TipoDocumentoModel, { foreignKey: 'int_tipoDocumentoFK' });
+UsuarioModel.belongsTo(TipoDocumentoModel, { foreignKey: 'int_tipoDocumentoFK', as: 'TipoDocumento' });
 UsuarioModel.belongsTo(RolModel, { foreignKey: 'id_rolFK' });
 
 

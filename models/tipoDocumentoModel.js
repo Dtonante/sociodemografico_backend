@@ -10,3 +10,4 @@ const TipoDocumentoModel = db.define('tbl_tipo_documentos', {
 });
 
 export default TipoDocumentoModel;
+

@@ -41,7 +41,7 @@ const ProfesionalModel = db.define('tbl_profesional', {
     var_jefeInmediato: { type: DataTypes.STRING(100), allowNull: false },
     var_sede: { type: DataTypes.STRING(50), allowNull: false },
     var_celular: { type: DataTypes.STRING(15), allowNull: false },
-    var_telefonoFijo: { type: DataTypes.STRING(10), allowNull: false },
+    var_telefonoEmergencia: { type: DataTypes.STRING(15), allowNull: false },
     var_nivelEscolaridad: { type: DataTypes.STRING(50), allowNull: false },
     var_nombreCarrera: { type: DataTypes.STRING(150), allowNull: false },
     boolean_actualmenteEstudia: { type: DataTypes.BOOLEAN, allowNull: false },
@@ -61,7 +61,11 @@ const ProfesionalModel = db.define('tbl_profesional', {
     var_correoElectronicoInstitucional: { type: DataTypes.STRING(50), allowNull: false },
     boolean_usaLentes: {  type: DataTypes.BOOLEAN, allowNull: false },
     boolean_bebidasEnergizantes: { type: DataTypes.BOOLEAN, allowNull: false },
-    var_zonaVivienda: { type: DataTypes.STRING(15), allowNull: false}
+    var_zonaVivienda: { type: DataTypes.STRING(15), allowNull: false},
+    var_frecuenciaBebidasEnergeticas: { type: DataTypes.STRING(50), allowNull: false}
+
+
+    
     
 
 
@@ -72,11 +76,11 @@ const ProfesionalModel = db.define('tbl_profesional', {
 
 
 // Importar modelos relacionados 1 a 1 
-ProfesionalModel.belongsTo(UsuarioModel, { foreignKey: 'id_usuarioFK' });
-ProfesionalModel.belongsTo(EpsModel, { foreignKey: 'id_epsFK' });
-ProfesionalModel.belongsTo(FondoPensionModel, { foreignKey: 'id_fondoPensionFK' });
-ProfesionalModel.belongsTo(CuentasBancariasModel, { foreignKey: 'id_cuentaBancariaFK' });
-ProfesionalModel.belongsTo(EstructuraOrgranizacionalModel, { foreignKey: 'id_areaFK' });
+ProfesionalModel.belongsTo(UsuarioModel, { foreignKey: 'id_usuarioFK', as:'Usuario' });
+ProfesionalModel.belongsTo(EpsModel, { foreignKey: 'id_epsFK', as: 'Eps' });
+ProfesionalModel.belongsTo(FondoPensionModel, { foreignKey: 'id_fondoPensionFK', as: 'FondoDePension' });
+ProfesionalModel.belongsTo(CuentasBancariasModel, { foreignKey: 'id_cuentaBancariaFK', as: 'CuentaBancaria' });
+ProfesionalModel.belongsTo(EstructuraOrgranizacionalModel, { foreignKey: 'id_areaFK', as: 'EstructuraOrganizacional' });
 
 
 export default ProfesionalModel;

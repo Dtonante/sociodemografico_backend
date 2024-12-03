@@ -1,16 +1,6 @@
 import UsuarioModel from "../models/usuarioModel.js";
 import bcrypt from "bcrypt";
 
-// // Crear un nuevo usuario
-// export const crearUsuario = async (req, res) => {
-//     try {
-//         const nuevoUsuario = await UsuarioModel.create(req.body);
-//         res.status(201).json(nuevoUsuario);
-//     } catch (error) {
-//         res.status(500).json({ message: 'Error al crear el usuario', error });
-//     }
-// };
-
 // Crear un nuevo usuario con contraseña encriptada
 export const crearUsuario = async (req, res) => {
     const { var_contrasena, ...userData } = req.body;
@@ -56,20 +46,51 @@ export const obtenerUsuarioPorId = async (req, res) => {
     }
 };
 
-// Actualizar un usuario por su ID
+// // Actualizar un usuario por su ID
+// export const actualizarUsuario = async (req, res) => {
+//     try {
+//         const usuario = await UsuarioModel.findByPk(req.params.id_usuarioPK);
+//         if (usuario) {
+//             await usuario.update(req.body);
+//             res.status(200).json(usuario);
+//         } else {
+//             res.status(404).json({ message: 'Usuario no encontrado' });
+//         }
+//     } catch (error) {
+//         res.status(500).json({ message: 'Error al actualizar el Usuario', error });
+//     }
+// };
+
+
 export const actualizarUsuario = async (req, res) => {
+    const { var_contrasena, ...otrosDatos } = req.body;
+
     try {
         const usuario = await UsuarioModel.findByPk(req.params.id_usuarioPK);
-        if (usuario) {
-            await usuario.update(req.body);
-            res.status(200).json(usuario);
-        } else {
-            res.status(404).json({ message: 'Usuario no encontrado' });
+
+        if (!usuario) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
         }
+
+        // Si se envía una nueva contraseña, encriptarla
+        if (var_contrasena) {
+            const hashedPassword = await bcrypt.hash(var_contrasena, 10);
+            otrosDatos.var_contrasena = hashedPassword; // Agregar la contraseña encriptada a los datos de actualización
+        }
+
+        // Actualizar el usuario con los datos restantes
+        await usuario.update(otrosDatos);
+
+        res.status(200).json({ message: 'Usuario actualizado correctamente', usuario });
     } catch (error) {
-        res.status(500).json({ message: 'Error al actualizar el Usuario', error });
+        res.status(500).json({ message: 'Error al actualizar el usuario', error });
     }
 };
+
+
+
+
+
 
 // Eliminar un usuario por su ID
 export const eliminarUsuario = async (req, res) => {

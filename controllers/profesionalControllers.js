@@ -1,14 +1,10 @@
 import ProfesionalModel from "../models/profesionalModel.js";
-
-// // Crear un nuevo profesional
-// export const crearProfesional = async (req, res) => {
-//     try {
-//         const nuevoProfesional = await ProfesionalModel.create(req.body);
-//         res.status(201).json(nuevoProfesional);
-//     } catch (error) {
-//         res.status(500).json({ message: 'Error al crear el profesional', error });
-//     }
-// };
+import UsuarioModel from "../models/usuarioModel.js";
+import TipoDocumentoModel from "../models/tipoDocumentoModel.js";
+import EpsModel from "../models/epsModel.js";
+import FondoPensionModel from "../models/fondoPensionModel.js";
+import CuentasBancariasModel from "../models/cuentasBancariasModel.js";
+import EstructuraOrgranizacionalModel from "../models/estructuraOrganizacionalModel.js";
 
 // Crear un nuevo profesional
 export const crearProfesional = async (req, res) => {
@@ -29,10 +25,20 @@ export const crearProfesional = async (req, res) => {
     }
 };
 
-// Obtener todos los profesionales
+// Obtener todos los profesionales con sus relaciones
 export const obtenerProfesionales = async (req, res) => {
     try {
-        const diferentesProfesionales = await ProfesionalModel.findAll();
+        const diferentesProfesionales = await ProfesionalModel.findAll({
+            include: [
+                {
+                    model: UsuarioModel,
+                    as: 'Usuario',
+                    attributes: ['boolean_estado','var_nombreCompleto', 'var_numeroDocumento', 'var_correoElectronicoPersonal'],
+                    
+                },
+            ],
+            
+        });
         res.status(200).json(diferentesProfesionales);
     } catch (error) {
         res.status(500).json({ message: 'Error al obtener los profesionales', error });
@@ -42,7 +48,46 @@ export const obtenerProfesionales = async (req, res) => {
 // Obtener un profesional por su ID
 export const obtenerProfesionalPorId = async (req, res) => {
     try {
-        const profesional = await ProfesionalModel.findByPk(req.params.id_profesionalPK);
+        const profesional = await ProfesionalModel.findByPk(
+            req.params.id_profesionalPK, // Primer parámetro: el ID que buscas
+            {
+                include: [
+                    {
+                        model: UsuarioModel,
+                        as: 'Usuario',
+                        attributes: ['var_nombreCompleto', 'int_tipoDocumentoFK', 'var_numeroDocumento', 'var_genero', 'var_correoElectronicoPersonal'],
+                        include: [
+                            {
+                                model: TipoDocumentoModel,
+                                as: 'TipoDocumento',
+                                attributes: ['var_nombreDocumento']
+                            }
+                        ]
+                    },
+                    {
+                        model: EpsModel,
+                        as: 'Eps',
+                        attributes: ['var_nombreEps']
+                    },
+                    {
+                        model: FondoPensionModel,
+                        as: 'FondoDePension',
+                        attributes: ['var_nombreFondoPension']
+                    },
+                    {
+                        model: CuentasBancariasModel,
+                        as: 'CuentaBancaria',
+                        attributes: ['var_nombreCuentaBancaria']
+                    },
+                    {
+                        model: EstructuraOrgranizacionalModel,
+                        as: 'EstructuraOrganizacional',
+                        attributes: ['var_nombreArea']
+                    }
+                ]
+            }
+        );
+
         if (profesional) {
             res.status(200).json(profesional);
         } else {
@@ -52,6 +97,9 @@ export const obtenerProfesionalPorId = async (req, res) => {
         res.status(500).json({ message: 'Error al obtener el profesional', error });
     }
 };
+
+
+
 
 // Actualizar un profesional por su ID
 export const actualizarProfesional = async (req, res) => {

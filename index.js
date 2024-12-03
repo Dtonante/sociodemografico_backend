@@ -51,6 +51,10 @@ import certificadosRoutes from './routes/certificadoRoutes.js';
 import rolesRoutes from './routes/rolesRoutes.js'
 //privilegios rutas
 import privilegioRoutes from './routes/privilegiosRoutes.js'
+//roles Privilegios
+import rolPrivilegioRoutes from './routes/rolPrivilegioRoutes.js'
+
+
 
 
 
@@ -113,6 +117,8 @@ app.use('/certificados', certificadosRoutes);
 app.use('/roles', rolesRoutes);
 //privilegios
 app.use('/privilegio', privilegioRoutes);
+//rol provilegios
+app.use('/rolPrivilegio', rolPrivilegioRoutes)
 
 
 
