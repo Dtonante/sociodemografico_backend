@@ -55,7 +55,7 @@ export const obtenerProfesionalPorId = async (req, res) => {
                     {
                         model: UsuarioModel,
                         as: 'Usuario',
-                        attributes: ['var_nombreCompleto', 'int_tipoDocumentoFK', 'var_numeroDocumento', 'var_genero', 'var_correoElectronicoPersonal'],
+                        attributes: ['var_nombreCompleto', 'int_tipoDocumentoFK', 'var_numeroDocumento', 'var_genero', 'var_correoElectronicoPersonal', 'var_contactoEmergencia'],
                         include: [
                             {
                                 model: TipoDocumentoModel,

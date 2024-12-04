@@ -14,6 +14,6 @@ const ProfesionalServiciosQueNoCuentan = db.define('tbl_profesional_servicios_qu
 
 // Importar modelos relacionados
 ProfesionalServiciosQueNoCuentan.belongsTo(ProfesionalModel, { foreignKey: 'id_profesionalFK' });
-ProfesionalServiciosQueNoCuentan.belongsTo(ServiciosQueNoCuentanModel, { foreignKey: 'id_servicioQueNoCuentaFK' });
+ProfesionalServiciosQueNoCuentan.belongsTo(ServiciosQueNoCuentanModel, { foreignKey: 'id_servicioQueNoCuentaFK', as: 'serviciosQueNoCuenta' });
 
 export default ProfesionalServiciosQueNoCuentan;

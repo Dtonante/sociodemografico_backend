@@ -14,7 +14,7 @@ const ProfesionalTransportePropio = db.define('tbl_Profesional_transporte_propio
 
 // Importar modelos relacionados
 ProfesionalTransportePropio.belongsTo(ProfesionalModel, { foreignKey: 'id_profesionalFK' });
-ProfesionalTransportePropio.belongsTo(TransportePropioModel, { foreignKey: 'id_transportePropioFK' });
+ProfesionalTransportePropio.belongsTo(TransportePropioModel, { foreignKey: 'id_transportePropioFK', as: 'transportePropio' });
 
 
 export default ProfesionalTransportePropio;

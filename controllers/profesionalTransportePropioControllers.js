@@ -27,7 +27,11 @@ export const obtenerProfesionalTransportePropioPorId = async (req, res) => {
     try {
         const profesionalesTransportePropio = await ProfesionalTransportePropioModel.findAll({
             where: { id_profesionalFK: req.params.id_profesionalFK },
-            include: [ { model: TransportePropioModel, required: true } ]
+            include: [ { 
+                model: TransportePropioModel,
+                required: true,
+                as: 'transportePropio'
+            } ]
         });
         if (profesionalesTransportePropio.length > 0) {
             res.status(200).json(profesionalesTransportePropio);

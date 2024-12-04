@@ -27,7 +27,12 @@ export const obtenerProfesionalFactorRiesgoPorId = async (req, res) => {
     try {
         const profesionalesFactoresDeRiesgo = await ProfesionalFactoresDeRiesgoModel.findAll({
             where: { id_profesionalFK: req.params.id_profesionalFK },
-            include: [ { model: FactoresDeRiesgoModel, required: true } ]
+            include: [{
+                model: FactoresDeRiesgoModel,
+                required: true,
+                as: 'factorRiesgo'
+            }
+            ]
         });
         if (profesionalesFactoresDeRiesgo.length > 0) {
             res.status(200).json(profesionalesFactoresDeRiesgo);

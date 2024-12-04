@@ -27,7 +27,11 @@ export const obtenerProfesionalTiempoLibrePorId = async (req, res) => {
     try {
         const profesionalTiempoLibre = await ProfesionalTiempoLibreModel.findAll({
             where: { id_profesionalFK: req.params.id_profesionalFK },
-            include: [ { model: TiempoLibreModel, required: true } ]
+            include: [ { 
+                model: TiempoLibreModel, 
+                required: true,
+                as: 'tiempoLibre'
+            } ]
         });
         if (profesionalTiempoLibre.length > 0) {
             res.status(200).json(profesionalTiempoLibre);

@@ -14,7 +14,7 @@ const ProfesionalTiempoLibreModel = db.define('tbl_profesional_tiempo_libre', {
 
 // Importar modelos relacionados
 ProfesionalTiempoLibreModel.belongsTo(ProfesionalModel, { foreignKey: 'id_profesionalFK' });
-ProfesionalTiempoLibreModel.belongsTo(TiempoLibreModel, { foreignKey: 'id_tiempoLibreFK' });
+ProfesionalTiempoLibreModel.belongsTo(TiempoLibreModel, { foreignKey: 'id_tiempoLibreFK', as: 'tiempoLibre' });
 
 
 

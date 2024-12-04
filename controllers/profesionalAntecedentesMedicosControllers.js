@@ -26,7 +26,11 @@ export const obtenerProfesionalAntecedenteMedicoPorId = async (req, res) => {
     try {
         const profesionalAntecedenteMedico = await ProfesionalAntecedentesMedicosModel.findAll({
             where: { id_profesionalFK: req.params.id_profesionalFK },
-            include: [ { model: AntecedentesMedicosModel, required: true } ]
+            include: [ { 
+                model: AntecedentesMedicosModel, 
+                required: true,
+                as: 'antecedentesMedicos' 
+            } ]
         });
         if (profesionalAntecedenteMedico.length > 0) {
             res.status(200).json(profesionalAntecedenteMedico);

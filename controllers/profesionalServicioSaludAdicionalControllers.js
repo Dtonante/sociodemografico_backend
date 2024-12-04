@@ -27,7 +27,11 @@ export const obtenerProfesionalServicioSaludAdicionalPorId = async (req, res) =>
     try {
         const profesionalServicioSaludAdicional = await ProfesionalServicioSaludAdicionalModel.findAll({
             where: { id_profesionalFK: req.params.id_profesionalFK },
-            include: [ { model: ServicioSaludAdicionalModel, required: true } ]
+            include: [ { 
+                model: ServicioSaludAdicionalModel, 
+                required: true,
+                as:'saludAdicional'
+            } ]
         });
         if (profesionalServicioSaludAdicional.length > 0) {
             res.status(200).json(profesionalServicioSaludAdicional);

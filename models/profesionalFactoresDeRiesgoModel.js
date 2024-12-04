@@ -13,7 +13,7 @@ const ProfesionalFactoresRiesgo = db.define('tbl_profesional_factores_riesgo', {
 
 // Importar modelos relacionados
 ProfesionalFactoresRiesgo.belongsTo(ProfesionalModel, { foreignKey: 'id_profesionalFK' });
-ProfesionalFactoresRiesgo.belongsTo(FactoresDeRiesgoModel, { foreignKey: 'id_factoresRiesgoFK' });
+ProfesionalFactoresRiesgo.belongsTo(FactoresDeRiesgoModel, { foreignKey: 'id_factoresRiesgoFK', as: 'factorRiesgo'});
 
 
 

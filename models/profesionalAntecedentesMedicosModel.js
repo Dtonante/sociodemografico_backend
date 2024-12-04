@@ -13,6 +13,6 @@ const ProfesionalAntecedentesMedicosModel = db.define('tbl_profesional_anteceden
 
 // Importar modelos relacionados
 ProfesionalAntecedentesMedicosModel.belongsTo(ProfesionalModel, { foreignKey: 'id_profesionalFK' });
-ProfesionalAntecedentesMedicosModel.belongsTo(AntecedentesMedicosModel, { foreignKey: 'id_antecedenteMedicoFK' });
+ProfesionalAntecedentesMedicosModel.belongsTo(AntecedentesMedicosModel, { foreignKey: 'id_antecedenteMedicoFK', as: 'antecedentesMedicos' });
 
 export default ProfesionalAntecedentesMedicosModel;

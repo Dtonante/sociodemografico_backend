@@ -26,7 +26,13 @@ export const obtenerProfesionalServicioQueNoCuentanPorId = async (req, res) => {
     try {
         const profesionalServicioQueNoCuentan = await ProfesionalServiciosQueNoCuentanModel.findAll({
             where: { id_profesionalFK: req.params.id_profesionalFK },
-            include: [ { model: ServiciosQueNoCuentanModel, required: true } ]
+            include: [
+                {
+                    model: ServiciosQueNoCuentanModel,
+                    as: 'serviciosQueNoCuenta',
+                    required: true
+                }
+            ]
         });
         if (profesionalServicioQueNoCuentan.length > 0) {
             res.status(200).json(profesionalServicioQueNoCuentan);
