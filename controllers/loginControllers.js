@@ -1,4 +1,6 @@
+
 import UsuarioModel from "../models/usuarioModel.js";
+import RolModel from "../models/rolesModel.js"; // Asegúrate de importar RolModel
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken"; 
 
@@ -9,9 +11,14 @@ export const loginUser = async (req, res) => {
   const { var_correoElectronicoPersonal, var_contrasena } = req.body;
 
   try {
-    // Buscar usuario por el correo personal
+    // Buscar usuario por el correo personal, incluyendo el rol relacionado
     const usuario = await UsuarioModel.findOne({
-      where: { var_correoElectronicoPersonal }
+      where: { var_correoElectronicoPersonal },
+      include: {
+        model: RolModel,  // Suponiendo que tienes un modelo RolModel
+        as: 'rol',  // El alias si es necesario, si no lo tienes, puedes omitirlo
+        attributes: ['var_nombreRol']  // Traemos solo el nombre del rol
+      }
     });
 
     // Validar si el usuario existe
@@ -27,9 +34,17 @@ export const loginUser = async (req, res) => {
     }
 
     // Crear un token de sesión JWT
-    const token = jwt.sign({ userId: usuario.id_usuarioPK }, JWT_SECRET, { expiresIn: "1h" });
+    const token = jwt.sign({ 
+      userId: usuario.id_usuarioPK, 
+      rol: usuario.rol ? usuario.rol.var_nombreRol : null
+    }, JWT_SECRET, { expiresIn: "1h" });
 
-    res.json({ message: "Inicio de sesión exitoso", token });
+    // Responder con el token y el nombre del rol
+    res.json({ 
+      message: "Inicio de sesión exitoso", 
+      token,
+      rol: usuario.rol ? usuario.rol.var_nombreRol : null 
+    });
   } catch (error) {
     res.status(500).json({ error: "Error al iniciar sesión" });
   }

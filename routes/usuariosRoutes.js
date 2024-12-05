@@ -1,5 +1,5 @@
 import express from 'express';
-import { crearUsuario, obtenerUsuarios, obtenerUsuarioPorId, actualizarUsuario, eliminarUsuario } from '../controllers/usuariosControllers.js';
+import { crearUsuario, obtenerUsuarios, obtenerUsuarioPorId, actualizarUsuario, eliminarUsuario, obtenerUsuarioPorCorreo } from '../controllers/usuariosControllers.js';
 
 const router = express.Router();
 
@@ -8,5 +8,6 @@ router.get('/', obtenerUsuarios);
 router.get('/:id_usuarioPK', obtenerUsuarioPorId);
 router.put('/:id_usuarioPK', actualizarUsuario);
 router.delete('/:id_usuarioPK', eliminarUsuario);
+router.get("/buscar/:correo", obtenerUsuarioPorCorreo);
 
 export default router;

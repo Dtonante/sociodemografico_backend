@@ -1,7 +1,6 @@
 import { DataTypes } from "sequelize";
 import db from "../database/db.js";
 import TipoDocumentoModel from "./tipoDocumentoModel.js";
-import RolModel from "./rolesModel.js";
 
 
 const UsuarioModel = db.define('tbl_usuarios', {
@@ -22,7 +21,10 @@ const UsuarioModel = db.define('tbl_usuarios', {
 
 // Importar modelos relacionados
 UsuarioModel.belongsTo(TipoDocumentoModel, { foreignKey: 'int_tipoDocumentoFK', as: 'TipoDocumento' });
-UsuarioModel.belongsTo(RolModel, { foreignKey: 'id_rolFK' });
+UsuarioModel.associate = (models) => {
+    // Relación con RolModel
+    UsuarioModel.belongsTo(models.RolModel, { foreignKey: 'id_rolFK', as: 'rol' });
+};
 
 
 export default UsuarioModel;

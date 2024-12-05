@@ -4,6 +4,10 @@ import cors from 'cors';
 //funcion para sincronizar los modelos
 import syncDB from './database/syncDB.js';
 
+// Importar todos los modelos
+import UsuarioModel from './models/usuarioModel.js';
+import RolModel from './models/rolesModel.js';
+
 // importar las rutas
 //Tipo documento rutas
 import tipoDocumentoRoutes from './routes/tipoDocumentoRoutes.js';
@@ -120,7 +124,9 @@ app.use('/privilegio', privilegioRoutes);
 //rol provilegios
 app.use('/rolPrivilegio', rolPrivilegioRoutes)
 
-
+// Establecer las asociaciones después de haber importado todos los modelos
+UsuarioModel.associate({ RolModel });
+RolModel.associate({ UsuarioModel });
 
 
 // Sincronizar la base de datos antes de iniciar el servidor
