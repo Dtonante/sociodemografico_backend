@@ -43,7 +43,6 @@
 // export { upload };
 
 import path from 'path';
-import fs from 'fs';
 import multer from 'multer';
 
 // Configuración de Multer para almacenar archivos en memoria
