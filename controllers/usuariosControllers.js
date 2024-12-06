@@ -143,24 +143,24 @@ export const obtenerUsuarioPorCorreo = async (req, res) => {
         subject: "Recuperación de Contraseña",
         html: `
         <div style="text-align: center; margin-bottom: 20px;">
-    <img src="https://res.cloudinary.com/drugne4nq/image/upload/v1733504041/imgEsumer/anbqbkzfbmmzzaizswom.jpg" 
-         alt="Imagen de fondo" 
-         style="width: 100%; height: auto; max-width: 100%;">
-</div>
-
-
-
-              <div style="background-color: #202b52; color: #ffffff; padding: 20px; border-radius: 10px;">
-                  <h2 style="text-align: center; margin-bottom: 10px;">Recuperación de Contraseña</h2>
-                  <p>Hola <strong>${usuario.var_nombreCompleto}</strong>,</p>
-                  <p>Hemos recibido una solicitud para recuperar tu contraseña. Si no fuiste tú, por favor ignora este correo. Si deseas recuperar tu contraseña, haz clic en el siguiente enlace:</p>
-                  <div style="text-align: center; margin: 20px 0;">
-                      <a href="${recoveryLink}" style="background-color: #ffffff; color: #202b52; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 5px;">Recuperar Contraseña</a>
-                  </div>
-                  <p>Saludos,</p>
-                  <p><strong>El equipo de soporte</strong></p>
-              </div>
-          </div>
+            <img src="https://res.cloudinary.com/drugne4nq/image/upload/v1733514879/imgEsumer/qus1osut11kvbjd7r8uq.jpg" 
+                 alt="Imagen de fondo" 
+                 style="width: 45%; height: auto; max-width: 150%;"> <!-- Reducido al 50% del tamaño original -->
+        </div>
+    
+        <div style="color: #000000; background-color: #ffffff; padding: 20px; border-radius: 10px; text-align: center;">
+            <h2 style="margin-bottom: 10px; font-size: 1.5rem; color: #000000;">Recuperación de Contraseña</h2>
+            <p style="font-size: 1.2rem; font-weight: bold; margin-bottom: 20px; color: #000000;">Hola, <strong>${usuario.var_nombreCompleto}</strong></p>
+            <p style="font-size: 1.1rem; margin-bottom: 20px; color: #000000;">
+                Hemos recibido una solicitud para recuperar tu contraseña. Si no fuiste tú, por favor ignora este correo.<br>
+                Si deseas recuperar tu contraseña, haz clic en el siguiente enlace:
+            </p>
+            <div style="text-align: center; margin: 20px 0;">
+                <a href="${recoveryLink}" style="background-color: #202b52; color: #ffffff; padding: 10px 20px; text-decoration: none; font-weight: bold; border-radius: 5px; display: inline-block;">Recuperar Contraseña</a>
+            </div>
+            <p style="font-size: 1.1rem; margin-top: 20px; color: #000000;">Saludos,</p>
+            <p style="font-size: 1.1rem; color: #000000;"><strong>El equipo de Gestión TIC</strong></p>
+        </div>
         `,
       };
 
@@ -180,3 +180,4 @@ export const obtenerUsuarioPorCorreo = async (req, res) => {
     res.status(500).json({ message: "Error al buscar el usuario", error });
   }
 };
+
