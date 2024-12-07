@@ -147,6 +147,7 @@ export const obtenerUsuarioPorCorreo = async (req, res) => {
         if (usuario) {
             // Construir la URL con el ID del usuario como parámetro de consulta
             const recoveryLink = `http://localhost:5173/CambiarContrasena?id=${usuario.id_usuarioPK}`;
+            // const recoveryLink = `https://evaluacion.esumer.edu.co/CambiarContrasena?id=${usuario.id_usuarioPK}`;
 
             // Definir las opciones del correo
             const mailOptions = {
