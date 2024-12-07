@@ -29,6 +29,3 @@ const db = new Sequelize('db_perfil_sociodemografico', 'sa', 'Esumer2024**', {
 });
 
 export default db;
-
-
-

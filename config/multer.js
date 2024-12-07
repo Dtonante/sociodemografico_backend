@@ -43,8 +43,8 @@
 // export { upload };
 
 import path from 'path';
-import fs from 'fs';
 import multer from 'multer';
+
 
 // Configuración de Multer para almacenar archivos en memoria
 const storage = multer.memoryStorage();
@@ -62,7 +62,7 @@ const upload = multer({
 
         if (extname && mimetype) {
             return cb(null, true);
-        } else {
+        } else {    
             return cb(new Error('Archivo no permitido. Solo se permiten PDFs'));
         }
     }
