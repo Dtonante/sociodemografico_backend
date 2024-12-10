@@ -8,6 +8,6 @@ router.get('/', obtenerUsuarios);
 router.get('/:id_usuarioPK', obtenerUsuarioPorId);
 router.put('/:id_usuarioPK', actualizarUsuario);
 router.delete('/:id_usuarioPK', eliminarUsuario);
-router.get("/buscar/:correo", obtenerUsuarioPorCorreo);
+router.get("/correo/:correo", obtenerUsuarioPorCorreo);
 
 export default router;
