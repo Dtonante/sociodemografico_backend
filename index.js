@@ -101,15 +101,9 @@ app.use("/profesionalAntecedenteMedico", profesionalAntecedentesMedicosRoutes);
 //Profesional factores de riesgo medico
 app.use("/profesionalFactoresRiesgo", profesionalFactoresDeRiesgoRoutes);
 //Profesional servicio de salud adicional
-app.use(
-  "/profesionalServicioSaludAdicional",
-  profesionalServicioSaludAdicionalRoutes
-);
+app.use("/profesionalServicioSaludAdicional", profesionalServicioSaludAdicionalRoutes);
 //Profesional servicio que no cuentan
-app.use(
-  "/profesionalServiciosQueNoCuentan",
-  profesionalServiciosQueNoCuentanRoutes
-);
+app.use("/profesionalServiciosQueNoCuentan", profesionalServiciosQueNoCuentanRoutes);
 //Profesional tiempo libre
 app.use("/profesionalTiempoLibre", profesionalTiempoLibreRoutes);
 //Profesional transporte propio
@@ -134,9 +128,9 @@ syncDB()
   .then(() => {
     // Inicia el servidor solo después de que la sincronización se complete
     const PORT = process.env.PORT || 3001;
-    app.listen(PORT, () => {
-      console.log(`Servidor escuchando en el puerto ${PORT}`);
-    });
+    app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
   })
   .catch((error) => {
     console.error("Error al sincronizar la base de datos:", error);

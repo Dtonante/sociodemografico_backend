@@ -45,34 +45,7 @@ export const obtenerUsuarioPorId = async (req, res) => {
   }
 };
 
-//actualizar usaurio
-// export const actualizarUsuario = async (req, res) => {
-//   const { var_contrasena, ...otrosDatos } = req.body;
-
-//   try {
-//     const usuario = await UsuarioModel.findByPk(req.params.id_usuarioPK);
-
-//     if (!usuario) {
-//       return res.status(404).json({ message: "Usuario no encontrado" });
-//     }
-
-//     // Si se envía una nueva contraseña, encriptarla
-//     if (var_contrasena) {
-//       const hashedPassword = await bcrypt.hash(var_contrasena, 10);
-//       otrosDatos.var_contrasena = hashedPassword; // Agregar la contraseña encriptada a los datos de actualización
-//     }
-
-//     // Actualizar el usuario con los datos restantes
-//     await usuario.update(otrosDatos);
-
-//     res
-//       .status(200)
-//       .json({ message: "Usuario actualizado correctamente", usuario });
-//   } catch (error) {
-//     res.status(500).json({ message: "Error al actualizar el usuario", error });
-//   }
-// };
-
+//actualizar usuario
 export const actualizarUsuario = async (req, res) => {
   const { var_contrasena, ...otrosDatos } = req.body;
 

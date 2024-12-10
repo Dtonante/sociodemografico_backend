@@ -45,6 +45,8 @@ export const obtenerProfesionales = async (req, res) => {
     }
 };
 
+
+
 // Obtener un profesional por su ID
 export const obtenerProfesionalPorId = async (req, res) => {
     try {
@@ -130,3 +132,27 @@ export const eliminarProfesional = async (req, res) => {
         res.status(500).json({ message: 'Error al eliminar el profesional', error });
     }
 };
+
+
+
+
+
+// Obtener un profesional por el ID del usuario
+export const obtenerProfesionalPorIdUsuario = async (req, res) => {
+    try {
+        // Buscar el profesional con el ID de usuario proporcionado
+        const profesional = await ProfesionalModel.findOne({
+            where: { id_usuarioFK: req.params.id_usuarioFK }, 
+            
+        });
+
+        if (profesional) {
+            res.status(200).json(profesional);
+        } else {
+            res.status(404).json({ message: 'Profesional no encontrado' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Error al obtener el profesional', error });
+    }
+};
+
