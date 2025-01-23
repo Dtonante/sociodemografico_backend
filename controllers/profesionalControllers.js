@@ -33,9 +33,37 @@ export const obtenerProfesionales = async (req, res) => {
                 {
                     model: UsuarioModel,
                     as: 'Usuario',
-                    attributes: ['boolean_estado','var_nombreCompleto', 'var_numeroDocumento', 'var_correoElectronicoPersonal'],
+                    attributes: ['boolean_estado','var_nombreCompleto', 'var_numeroDocumento', 'var_correoElectronicoPersonal', 'var_genero', 'var_contactoEmergencia', 'int_tipoDocumentoFK'],
+                    include: [
+                        {
+                            model: TipoDocumentoModel,
+                            as: 'TipoDocumento',
+                            attributes: ['var_nombreDocumento']
+                        },
+                       
+                    ],
                     
                 },
+                {
+                    model: EpsModel,
+                    as: 'Eps',
+                    attributes: ['var_nombreEps']
+                },
+                {
+                    model: FondoPensionModel,
+                    as: 'FondoDePension',
+                    attributes: ['var_nombreFondoPension']
+                },
+                {
+                    model: CuentasBancariasModel,
+                    as: 'CuentaBancaria',
+                    attributes: ['var_nombreCuentaBancaria']
+                },
+                {
+                    model: EstructuraOrgranizacionalModel,
+                    as: 'EstructuraOrganizacional',
+                    attributes: ['var_nombreArea']
+                }
             ],
             
         });
