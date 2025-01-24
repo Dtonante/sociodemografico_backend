@@ -29,3 +29,21 @@ const db = new Sequelize('db_perfil_sociodemografico', 'sa', 'Esumer2024**', {
 });
 
 export default db;
+
+
+
+// import { Sequelize } from 'sequelize';
+
+// const db = new Sequelize('db_copia_data', 'sa', 'Esumer2024**', {
+//     host: '10.1.2.24',
+//     dialect: 'mssql',
+//     dialectOptions: {
+//         instanceName: null,
+//         encrypt: true,
+//         trustServerCertificate: true,
+//     },
+    
+//     logging: false,
+// });
+
+// export default db;

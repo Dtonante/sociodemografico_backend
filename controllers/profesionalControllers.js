@@ -184,3 +184,34 @@ export const obtenerProfesionalPorIdUsuario = async (req, res) => {
     }
 };
 
+
+
+// Función para calcular la diferencia de días entre dos fechas
+function calcularDiasDiferencia(fechaInicio) {
+    const fechaActual = new Date();
+    const fechaIngreso = new Date(fechaInicio);
+    const diferenciaTiempo = fechaActual - fechaIngreso;
+    const diferenciaDias = Math.floor(diferenciaTiempo / (1000 * 60 * 60 * 24));
+    return diferenciaDias.toString();
+}
+
+// Controlador para actualizar la antigüedad de todos los profesionales
+export const actualizarAntiguedadProfesionales = async (req, res) => {
+    try {
+        // Obtener todos los profesionales
+        const profesionales = await ProfesionalModel.findAll();
+
+        // Recorrer cada profesional y actualizar su antigüedad
+        for (const profesional of profesionales) {
+            const fechaIngreso = profesional.date_fechaIngresoInstitucion;
+            const antiguedad = calcularDiasDiferencia(fechaIngreso);
+
+            // Actualizar el campo var_antiguedadInstitucion
+            await profesional.update({ var_antiguedadInstitucion: antiguedad });
+        }
+
+        res.status(200).json({ message: 'Antigüedad de los profesionales actualizada correctamente.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error al actualizar la antigüedad de los profesionales', error });
+    }
+};
