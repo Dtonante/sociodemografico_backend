@@ -4,10 +4,10 @@ import { crearEps, obtenerEps, obtenerEpsPorId, actualizarEps, eliminarEps } fro
 
 const router = express.Router();
 
-router.post('/', verifyToken, crearEps);
+router.post('/', crearEps);
 router.get('/', obtenerEps);
 router.get('/:id_epsPK', obtenerEpsPorId);
-router.put('/:id_epsPK', verifyToken, actualizarEps);
-router.delete('/:id_epsPK', verifyToken, eliminarEps);
+router.put('/:id_epsPK', actualizarEps);
+router.delete('/:id_epsPK', eliminarEps);
 
 export default router;
