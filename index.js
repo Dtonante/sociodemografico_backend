@@ -63,6 +63,7 @@ const app = express();
 
 app.use(cors());
 
+
 // Middleware para servir archivos estáticos (como el HTML)
 // Middleware para analizar cuerpos JSON
 app.use(express.json());
