@@ -69,57 +69,57 @@ app.use(cors());
 app.use(express.json());
 
 // Configurar Express para servir archivos estáticos desde la carpeta 'static/img'
-app.use('/static', express.static(path.join(process.cwd(), 'static/img')));
+// app.use('/static', express.static(path.join(process.cwd(), 'static/img')));
 
 //Rutas de cada modelo
 //Tipo documento
-app.use("/tipodocumentos", tipoDocumentoRoutes);
+app.use("/api/tipodocumentos", tipoDocumentoRoutes);
 //Eps
-app.use("/eps", epsRoutes);
+app.use("/api/eps", epsRoutes);
 //Servicios con los que no cuentan
-app.use("/serviciosQueNoCuentan", serviciosQueNoCuentanRoutes);
+app.use("/api/serviciosQueNoCuentan", serviciosQueNoCuentanRoutes);
 //Factores de riesgo
-app.use("/factoresRiesgo", factoresDeRiesgoRouter);
+app.use("/api/factoresRiesgo", factoresDeRiesgoRouter);
 //Tiempo libre
-app.use("/tiempoLibre", tiempoLibreRoutes);
+app.use("/api/tiempoLibre", tiempoLibreRoutes);
 //Servicios de salud adicional
-app.use("/servicioSaludAdicional", servicioSaludAdicionalRoutes);
+app.use("/api/servicioSaludAdicional", servicioSaludAdicionalRoutes);
 //Antecedentes medicos
-app.use("/antecedentesMedicos", antecedentesMedicosRoutes);
+app.use("/api/antecedentesMedicos", antecedentesMedicosRoutes);
 //Fondos de pension
-app.use("/fondoPension", fondoPensionRoutes);
+app.use("/api/fondoPension", fondoPensionRoutes);
 //Estructura organizacional
-app.use("/estructuraOrganizacional", estructuraOrganizacionalRoutes);
+app.use("/api/estructuraOrganizacional", estructuraOrganizacionalRoutes);
 //Tipos de cuentas bancarias
-app.use("/cuentasBancarias", cuentasBancariasRoutes);
+app.use("/app/cuentasBancarias", cuentasBancariasRoutes);
 //transporte propio
-app.use("/transportePropio", transportePropioRoutes);
+app.use("/app/transportePropio", transportePropioRoutes);
 //Usuarios
-app.use("/usuarios", usuariosRoutes);
+app.use("/app/usuarios", usuariosRoutes);
 //Profesional
-app.use("/profesional", profesionalRoutes);
+app.use("/api/profesional", profesionalRoutes);
 //Profesional antecedente medico
-app.use("/profesionalAntecedenteMedico", profesionalAntecedentesMedicosRoutes);
+app.use("/api/profesionalAntecedenteMedico", profesionalAntecedentesMedicosRoutes);
 //Profesional factores de riesgo medico
-app.use("/profesionalFactoresRiesgo", profesionalFactoresDeRiesgoRoutes);
+app.use("/api/profesionalFactoresRiesgo", profesionalFactoresDeRiesgoRoutes);
 //Profesional servicio de salud adicional
-app.use("/profesionalServicioSaludAdicional", profesionalServicioSaludAdicionalRoutes);
+app.use("/api/profesionalServicioSaludAdicional", profesionalServicioSaludAdicionalRoutes);
 //Profesional servicio que no cuentan
-app.use("/profesionalServiciosQueNoCuentan", profesionalServiciosQueNoCuentanRoutes);
+app.use("/api/profesionalServiciosQueNoCuentan", profesionalServiciosQueNoCuentanRoutes);
 //Profesional tiempo libre
-app.use("/profesionalTiempoLibre", profesionalTiempoLibreRoutes);
+app.use("/api/profesionalTiempoLibre", profesionalTiempoLibreRoutes);
 //Profesional transporte propio
-app.use("/profesionalTransportePropio", profesionalTransportePropioRoutes);
+app.use("/api/profesionalTransportePropio", profesionalTransportePropioRoutes);
 //Login
-app.use("/login", loginRoutes);
+app.use("/api/login", loginRoutes);
 //Certificados
-app.use("/certificados", certificadosRoutes);
+app.use("/api/certificados", certificadosRoutes);
 //roles
-app.use("/roles", rolesRoutes);
+app.use("/api/roles", rolesRoutes);
 //privilegios
-app.use("/privilegio", privilegioRoutes);
+app.use("/api/privilegio", privilegioRoutes);
 //rol provilegios
-app.use("/rolPrivilegio", rolPrivilegioRoutes);
+app.use("/api/rolPrivilegio", rolPrivilegioRoutes);
 
 // Establecer las asociaciones después de haber importado todos los modelos
 UsuarioModel.associate({ RolModel });
